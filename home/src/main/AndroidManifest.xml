@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.home">
+
+    <application>
+        <activity
+            android:name=".views.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.HomeActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

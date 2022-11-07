@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:id="@+id/frameLayout11"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/cart_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/crtimg"
+            android:layout_width="wrap_content"
+            android:background="@color/white"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_polo" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout12"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout11">
+
+        <FrameLayout
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/dec_cart"
+            android:layout_gravity="end|center"
+            android:background="@drawable/count_bg">
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_minus" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/inc_cart"
+            android:layout_gravity="start|center"
+            android:background="@drawable/count_bg">
+
+            <ImageView
+                android:id="@+id/imageView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_plus" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/crt_qty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:maxLength="7"
+            android:textColor="@color/black"
+            android:text="1" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/crt_title"
+        android:layout_width="120dp"
+        android:maxLines="2"
+        android:layout_height="40dp"
+        android:text="Henley Shirts"
+        app:layout_constraintEnd_toStartOf="@+id/frameLayout12"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toEndOf="@+id/frameLayout11"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout11" />
+
+    <TextView
+        android:id="@+id/cart_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="$250"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout11"
+        app:layout_constraintStart_toStartOf="@+id/crt_title"
+        app:layout_constraintTop_toBottomOf="@+id/crt_title"
+        app:layout_constraintVertical_bias="0.166" />
+</androidx.constraintlayout.widget.ConstraintLayout>
