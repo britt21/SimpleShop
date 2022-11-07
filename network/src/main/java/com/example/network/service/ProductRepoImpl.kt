@@ -48,7 +48,7 @@ class ProductRepoImpl(val productinterface: ProductInterface,val productDao: Pro
 
 
     //Room
-    override fun getAllCart(): Flow<List<CartEntity>> {
+    override fun getAllCart(): LiveData<List<CartEntity>> {
         return productDao.ReadCart()
     }
 

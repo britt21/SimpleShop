@@ -1,6 +1,10 @@
-# Commercial Power
+# A Product for Commercial Power
+
+### @Bright Ugwu 2022
 # Architecture Pattern:
-## 1. Multi-Module Architecture Pattern to Achieve Separation of Concerns:
+## 1. The reason for Multi-Module Architecture Pattern to  have a scalable code base and to Achieve Separation of Concerns:
+
+# These are Seperated As Follows: 
 
 ## OnBoarding Layer
 ## Common Layer
@@ -10,9 +14,9 @@
 ## Auth Layer
 ## app Layer
 
-# Libriary Used On this Project:
+# Libraries Used On this Project:
 
-## 1. Android Jetpack Component
+## 1. Android Jetpack Library
 
 ## 2. Hilt For Dependency Injection
 
@@ -29,19 +33,20 @@
 ## 8. RecyclerView For (ListItems)
 
 
-#  Architectural Design Used:
+# Architectural Pattern Used:
 ## Mvvm Architecture Pattern
 
 # Test:
 
 ## Local Test:
-## 1. Test ViewModel And LiveData
+## 1. Test ViewModel And LiveData gets the Value When It comes from the network
 
 ## Integration Test:
-## 2. Database Test
+## 2. Database Test when Inserting Data into the Database Is Observed And Not Empty
 
 ## End To End Test
 ## 3. Espresso Test
+## 4. Manual Testing
 
 
 

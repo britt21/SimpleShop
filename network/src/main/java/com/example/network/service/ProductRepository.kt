@@ -30,7 +30,7 @@ interface ProductRepository {
 
 
     //Room
-    fun getAllCart() :Flow<List<CartEntity>>
+    fun getAllCart() :LiveData<List<CartEntity>>
     suspend fun addToCart(id : CartEntity)
 
     suspend fun InsertCategory(productEntity: ProductEntity)

@@ -22,5 +22,5 @@ interface ProductDao {
 
 
     @Query("SELECT * FROM CartEntity")
-    fun ReadCart(): Flow<List<CartEntity>>
+    fun ReadCart(): LiveData<List<CartEntity>>
 }

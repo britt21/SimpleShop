@@ -25,7 +25,7 @@ class ProductViewModel @Inject constructor(
 
 
     var readCategory: LiveData<ProductEntity> = productRepository.ReadCategory()
-    var readCart: LiveData<List<CartEntity>> = productRepository.getAllCart().asLiveData()
+    var readCart: LiveData<List<CartEntity>> = productRepository.getAllCart()
 
 
     private val _liveProduct = MutableLiveData<com.example.common.NetworkCall<Products>>()
@@ -37,6 +37,7 @@ class ProductViewModel @Inject constructor(
         MutableLiveData<com.example.common.NetworkCall<SingleProduct>>()
     val livesingleProduct: LiveData<com.example.common.NetworkCall<SingleProduct>>
         get() = _livesingleProduct
+
 
     private val _livecart = MutableLiveData<com.example.common.NetworkCall<Carts>>()
     val livecart: LiveData<com.example.common.NetworkCall<Carts>>
