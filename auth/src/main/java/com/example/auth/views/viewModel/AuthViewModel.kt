@@ -1,5 +1,6 @@
 package com.example.auth.views.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,6 +33,9 @@ class AuthViewModel @Inject constructor(private val authRepository: ProductRepos
         viewModelScope.launch {
             try{
                 val response = authRepository.signupUser(signup)
+
+                Log.d("ONSIGNUPDATA","${response.body()}")
+                Log.d("ONSIGNUPDATACODE","${response.code()}")
 
                 when{
                     response.isSuccessful ->{

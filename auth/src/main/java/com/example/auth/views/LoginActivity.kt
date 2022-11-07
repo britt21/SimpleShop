@@ -55,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
             binding.loginBtn.isEnabled=false
             val loginUser = LoginUser(password.toString(), email.toString())
             viewModel.loginUser(loginUser)
-            viewModel.livelogin.observeOnce(this, Observer { data ->
+            viewModel.livelogin.observe(this, Observer { data ->
 
                 when(data) {
                     is  com.example.common.NetworkCall.Success ->{

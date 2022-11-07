@@ -49,14 +49,14 @@ class SignUpActivity : AppCompatActivity() {
 
                 viewModel.signUpUser(signup)
 
-                viewModel.liveSignUp.observeOnce(this, Observer { data ->
+                viewModel.liveSignUp.observe(this, Observer { data ->
                     when (data) {
                         is com.example.common.NetworkCall.Success -> {
                             finish()
                             binding.signupBtn.isEnabled = true
                             binding.progressBar.visibility = View.GONE
-                            val intent = Intent(this, HomeActivity::class.java)
-                            startActivity(intent)
+                            val stintent = Intent(this, HomeActivity::class.java)
+                            startActivity(stintent)
                         }
                         is com.example.common.NetworkCall.Error -> {
                             binding.signupBtn.isEnabled = true
