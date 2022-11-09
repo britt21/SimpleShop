@@ -17,13 +17,31 @@ import com.example.data.room.ProductEntity
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
+
+
 interface ProductRepository {
 
     //Network
+    /** (SignUp Step 2)
+     * This function is Sent to AuthViewModel (Step 1), To see where the interaction happens with the Interface and the endpoint
+     * Base Url Check For Repository Impl (SignUp Step 3)
+     * */
     suspend fun signupUser(signup: Signup) :Response<SignupResponse>
+
+    /** (Login Step 2)
+     * This function is Sent to AuthViewModel (Login Step 1), To see where the interaction happens with the Interface and the endpoint
+     * Base Url Check For Repository Impl (Login Step 3)
+     * */
     suspend fun loginUser(loginuser: LoginUser) :Response<LoginResponse>
 
+    /** (GetProduct  Step 2)
+     * This Function Triggers The GetProduct from the repository (GetProduct Step 3) in product Repository Impl (Step 3)
+     * */
     suspend fun getAllProduct() :Response<Products>
+
+    /** (GetSingleProduct  Step 2)
+     * This Function Triggers The GetProduct from the repository (GetSingleProduct Step 3) in product Repository Impl (Step 3)
+     * */
     suspend fun getSingleProduct(id : String) :Response<SingleProduct>
 
     suspend fun updateUser(updateUser:  UpdateUser) :Response<UpdateUserResponse>

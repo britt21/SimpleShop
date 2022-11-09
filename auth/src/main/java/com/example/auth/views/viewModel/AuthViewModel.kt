@@ -28,6 +28,10 @@ class AuthViewModel @Inject constructor(private val authRepository: ProductRepos
     val livelogin : LiveData<com.example.common.NetworkCall<LoginResponse>>
     get() =  _livelogin
 
+
+    /** (Signup Step 1)
+     * This Function Triggers The SignUp Users Directly from the repository SignUp Funcion Check For Signup (Step 2) in auth Repository
+     * */
     fun signUpUser(signup: Signup){
         _liveSignUp.value = com.example.common.NetworkCall.Loading()
         viewModelScope.launch {
@@ -52,6 +56,9 @@ class AuthViewModel @Inject constructor(private val authRepository: ProductRepos
         }
     }
 
+    /** (Login Step 1)
+     * This Function Triggers The SignUp Users Directly from the repository Login Funcion Check For Signup (Login Step 2) in auth Repository
+     * */
     fun loginUser(loginuser: LoginUser){
         _liveSignUp.value = com.example.common.NetworkCall.Loading()
         viewModelScope.launch {

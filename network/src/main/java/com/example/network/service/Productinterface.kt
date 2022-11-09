@@ -19,22 +19,34 @@ const val SHOPPING_URL = "https://fakestoreapi.com/"
 
 interface ProductInterface {
 
+    /** (SignUp Step 4)
+     * This function triggers the signup and Sends it to (SignUp Step 2) in Product Repository
+     * */
     @POST("users")
    suspend fun signUp(
         @Body user: Signup
    ): Response<SignupResponse>
 
 
+    /** (Login Step 4)
+     * This function triggers the signup and Sends it to (Login Step 2) in Product Repository
+     * */
     @POST("auth/login")
    suspend fun loginUser(
         @Body user: LoginUser
    ): Response<LoginResponse>
 
 
+    /** (GetProduct  Step 4)
+     * This Function Triggers The GetProduct from the backend  see (Get Product Step 2)
+     * */
     @GET("products")
     suspend fun getallProducts(): Response<Products>
 
 
+    /** (GetSingleProduct  Step 4)
+     * This Function Triggers The GetProduct from the backend  see (GetSingleProduct Step 2)
+     * */
     @GET("products/{id}")
     suspend fun getSingleProduct(
         @Path("id") id : String

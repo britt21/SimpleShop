@@ -44,6 +44,9 @@ class ProductViewModel @Inject constructor(
         get() = _livecart
 
     //Network
+    /** (GetProduct  Step 1)
+     * This Function Triggers The GetProduct from the repository (GetProduct Step 2) in product Repository
+     * */
     fun getallProducts() {
         _liveProduct.value = com.example.common.NetworkCall.Loading()
         viewModelScope.launch {
@@ -86,6 +89,9 @@ class ProductViewModel @Inject constructor(
         }
     }
 
+    /** (GetSingleProduct  Step 1)
+     * This Function Triggers The GetProduct from the repository (GetSingleProduct Step 2) in product Repository
+     * */
     fun getSingleProducts(id: String) {
         _livesingleProduct.value = com.example.common.NetworkCall.Loading()
         viewModelScope.launch {

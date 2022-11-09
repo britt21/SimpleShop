@@ -14,6 +14,10 @@ import com.example.data.model.auth_model.login.LoginUser
 import com.example.home.views.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
+
+/**
+ * This is Login Backend Holding the Ui and Handles The functionalities that the users Sees
+ * */
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
@@ -30,7 +34,9 @@ class LoginActivity : AppCompatActivity() {
 
         window.decorView.systemUiVisibility= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
-
+        /** (Step 1)
+         * This is the Button Onclick Listiner that triggers the Login Function
+         * */
         binding.loginBtn.setOnClickListener {
             loginUser()
         }
@@ -45,6 +51,10 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
+    /** (Step 2)
+     * This Function Automatically triggers the Login directly from the view-Model when the Login Button Is Clicked
+     *
+     * */
     fun loginUser(){
         val email = binding.nameit.text
         val password = binding.passit.text
