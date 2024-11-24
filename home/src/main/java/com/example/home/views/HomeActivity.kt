@@ -72,7 +72,6 @@ class HomeActivity : AppCompatActivity(), Onclick {
 
                 productAdapter.submitList(productsItemList)
                 binding.rvList.adapter = productAdapter
-                productAdapter.notifyDataSetChanged()
 
             }else{
                 getProducts()
