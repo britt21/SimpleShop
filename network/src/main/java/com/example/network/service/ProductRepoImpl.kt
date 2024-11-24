@@ -12,6 +12,7 @@ import com.example.data.model.product_model.Products
 import com.example.data.model.product_model.single_product.SingleProduct
 import com.example.data.model.update_user.UpdateUser
 import com.example.data.model.update_user.response.UpdateUserResponse
+import com.example.data.room.AllProductEntity
 import com.example.data.room.CartEntity
 import com.example.data.room.ProductDao
 import com.example.data.room.ProductEntity
@@ -22,32 +23,22 @@ class ProductRepoImpl(val productinterface: ProductInterface,val productDao: Pro
     ProductRepository {
 
     // Network
-    /** (SignUp Step 3)
-     * This function is Implementation that Binds Repository With product Interface see (Sign Up Step 4) in product Implementation to See Where
-     * Retrofit Makes The Function call directly to the Back end Please Note that these signup do not interact with the backend
-     * */
+
     override suspend fun signupUser(signup: Signup): Response<SignupResponse> {
        return productinterface.signUp(signup)
     }
 
-    /** (Login  Step 3)
-     * This function is Implementation that Binds Repository With product Interface see (Login Step 4) in product Implementation to See Where
-     * Retrofit Makes The Function call directly to the Back end Please Note that these signup do not interact with the backend
-     * */
+
     override suspend fun loginUser(loginuser: LoginUser): Response<LoginResponse> {
      return   productinterface.loginUser(loginuser)
     }
 
-    /** (GetProduct  Step 3)
-     * This Function Triggers The GetProduct from the product Interface (Get Product Step 4)
-     * */
+
     override suspend fun getAllProduct(): Response<Products> {
        return productinterface.getallProducts()
     }
 
-    /** (GetSingleProduct  Step 3)
-     * This Function Triggers The GetProduct from the product Interface (GetSingleProduct Step 4)
-     * */
+
     override suspend fun getSingleProduct(id : String): Response<SingleProduct> {
         return productinterface.getSingleProduct(id)
     }
@@ -79,5 +70,20 @@ class ProductRepoImpl(val productinterface: ProductInterface,val productDao: Pro
     override fun ReadCategory(): LiveData<ProductEntity> {
         return productDao.ReadCategory()
     }
+
+    override fun insertAllProducts(productEntity: AllProductEntity) {//
+        productDao.insertallProducts(productEntity)
+    }
+
+    override fun getallProducts(): LiveData<List<AllProductEntity>> {
+        var offlineproductdao =  productDao.readAllProducts()
+        println("OFFLINE::DAO "+offlineproductdao.value)
+        return offlineproductdao
+    }
+
+    override fun getProducts(): LiveData<List<CartEntity>> {
+        return productDao.ReadCart()
+    }
+
 
 }

@@ -25,6 +25,10 @@ class CartActivity : AppCompatActivity() {
 
         window.decorView.systemUiVisibility= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
+        binding.etback.setOnClickListener {
+            onBackPressed()
+        }
+
         viewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
         viewModel.readCart.observe(this, Observer { cart ->
             for (items in cart){
@@ -32,8 +36,6 @@ class CartActivity : AppCompatActivity() {
                 cartAdapter.submitList(carts)
 
             }
-
-
         })
 
 

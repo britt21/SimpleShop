@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.data.room.converter.RoomConverter
 
-@Database(entities = [ProductEntity::class,CartEntity::class], version = 1, exportSchema = false)
+@Database(entities = [ProductEntity::class,CartEntity::class,AllProductEntity::class], version = 1, exportSchema = false)
 @TypeConverters(RoomConverter::class)
 abstract class ProductDatabase : RoomDatabase() {
     abstract val productDao : ProductDao

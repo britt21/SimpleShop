@@ -23,4 +23,17 @@ interface ProductDao {
 
     @Query("SELECT * FROM CartEntity")
     fun ReadCart(): LiveData<List<CartEntity>>
+
+
+    @androidx.room.Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertallProducts(allProductEntity: AllProductEntity)
+
+
+    @Query("SELECT * FROM AllproductsEntity")
+    fun readAllProducts(): LiveData<List<AllProductEntity>>
+
+
+
+
+
 }

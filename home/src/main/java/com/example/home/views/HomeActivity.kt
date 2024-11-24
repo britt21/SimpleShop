@@ -31,7 +31,9 @@ class HomeActivity : AppCompatActivity(), Onclick {
         viewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
 
 
-        showShimmer()
+
+        readOfflineRepository()
+
         binding.profilebg.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
@@ -46,7 +48,6 @@ class HomeActivity : AppCompatActivity(), Onclick {
         }
 
         binding.rvList.adapter = productAdapter
-        getProducts()
 
         setContentView(binding.root)
 
@@ -60,9 +61,29 @@ class HomeActivity : AppCompatActivity(), Onclick {
         binding.rvList.hideShimmerAdapter()
     }
 
+    fun readOfflineRepository(){
+        viewModel.readOfflineProducts().observe(this, Observer { data ->
+
+
+            if (data.isNotEmpty()){
+
+                val productsItemList: List<ProductsItem> = data.flatMap { it.productsItem }
+                println("LOCAL::OFFLINE:::PRODUCT:::" +productsItemList)
+
+                productAdapter.submitList(productsItemList)
+                binding.rvList.adapter = productAdapter
+                productAdapter.notifyDataSetChanged()
+
+            }else{
+                getProducts()
+
+            }
+        })
+    }
     fun getProducts() {
         viewModel.getallProducts()
         viewModel.liveProduct.observe(this, Observer { product ->
+            println("ONLINE::PRODUCT::: "+product.data)
             when (product) {
                 is com.example.common.NetworkCall.Success -> {
                     hideShimmer()

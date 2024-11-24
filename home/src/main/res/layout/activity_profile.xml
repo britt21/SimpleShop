@@ -339,7 +339,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_sheet"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
+        android:paddingHorizontal="10dp"
         android:paddingBottom="20dp"
         android:layout_height="81dp"
         app:layout_constraintBottom_toBottomOf="parent"

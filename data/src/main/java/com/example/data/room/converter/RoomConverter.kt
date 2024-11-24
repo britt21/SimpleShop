@@ -2,6 +2,8 @@ package com.example.data.room.converter
 
 import android.graphics.drawable.Drawable
 import androidx.room.TypeConverter
+import com.example.data.model.product_model.Products
+import com.example.data.model.product_model.ProductsItem
 import com.example.data.room.CartData
 import com.example.data.room.ItemCategory
 import com.google.gson.Gson
@@ -32,6 +34,23 @@ class RoomConverter {
         val token  = object : TypeToken<CartData>(){}.type
         return gson.fromJson(item,token)
     }
+
+
+
+
+
+    @TypeConverter
+    fun fromprod(item : Products) : String{
+        return gson.toJson(item)
+    }
+    @TypeConverter
+    fun toprod(item : String) : Products{
+        val token  = object : TypeToken<Products>(){}.type
+        return gson.fromJson(item,token)
+    }
+
+
+
 
 
 }
