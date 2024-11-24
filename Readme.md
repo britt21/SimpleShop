@@ -1,3 +1,6 @@
+![Screenshot_20241124_010924](https://github.com/user-attachments/assets/4496675c-cb17-45ec-a205-a58ad2f31986)
+![Screenshot_20241124_011000](https://github.com/user-attachments/assets/88ff7024-6f14-4b19-b1fc-bc1bf140fb86)
+![Screenshot_20241124_011022](https://github.com/user-attachments/assets/88be084f-093a-431b-a766-b5231d4d4a79)
 
 ### How to run the app
 
