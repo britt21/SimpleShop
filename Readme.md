@@ -12,7 +12,7 @@
 
 
 ## What i would have added:
- ### Implement pagination for loading large datasets (e.g., products) using tools like Paging 3.
+ ### Implement pagination for loading large data
 
 
 ### @Bright Ugwu 
