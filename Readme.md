@@ -5,23 +5,23 @@
 ### How to run the app
 
 ### Sync the Project
-   ### Open your project in Android Studio.
-   ### Go to File > Sync Project with Gradle Files to ensure all dependencies are downloaded and integrated.
+### Open your project in Android Studio.
+### Go to File > Sync Project with Gradle Files to ensure all dependencies are downloaded and integrated.
 ## Connect a physical Android device via USB and enable Developer Options and USB Debugging.
 ### Alternatively, start an Android emulator from Device Manager in Android Studio.'
 
 
 ## What i would have added:
- ### Implement pagination for loading large data
+### Implement pagination for loading large data
 
 
-### @Bright Ugwu 
+### @Bright Ugwu
 # Architecture Pattern:
 ## 1. The reason for Multi-Module Architecture Pattern to  have a scalable code base and to Achieve Separation of Concerns:
 
 
 
-# These are Seperated As Follows: 
+# These are Seperated As Follows:
 ## OnBoarding Layer
 ## Common Layer
 ## Home Layer
@@ -65,7 +65,6 @@
 ## End To End Test
 ## 3. Espresso Test
 ## 4. Manual Testing
-
 
 
 
