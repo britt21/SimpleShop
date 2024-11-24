@@ -10,6 +10,11 @@
 ## Connect a physical Android device via USB and enable Developer Options and USB Debugging.
 ### Alternatively, start an Android emulator from Device Manager in Android Studio.'
 
+
+## What i would have added:
+ ### Implement pagination for loading large datasets (e.g., products) using tools like Paging 3.
+
+
 ### @Bright Ugwu 
 # Architecture Pattern:
 ## 1. The reason for Multi-Module Architecture Pattern to  have a scalable code base and to Achieve Separation of Concerns:
