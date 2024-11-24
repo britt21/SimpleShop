@@ -34,10 +34,10 @@ class HomeActivity : AppCompatActivity(), Onclick {
 
         readOfflineRepository()
 
-        binding.profilebg.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.profilebg.setOnClickListener {
+//            val intent = Intent(this, ProfileActivity::class.java)
+//            startActivity(intent)
+//        }
         binding.cartbg.setOnClickListener {
             val intent = Intent(this, CartActivity::class.java)
             startActivity(intent)

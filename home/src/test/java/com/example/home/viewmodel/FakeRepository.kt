@@ -30,13 +30,15 @@ var signupResponse = SignupResponse(0)
 var loginResponse = LoginResponse("")
 var product = Products()
 
-var productEntity = MutableLiveData<ProductEntity>()
 
 val productEntitymock = mutableListOf<ProductEntity>()
 val allproductEntitymock = mutableListOf<AllProductEntity>()
 val cartEntitymock = mutableListOf<CartEntity>()
 
 class FakeRepository() : ProductRepository {
+    var productEntity = MutableLiveData<ProductEntity>()
+    var allproductEntity : LiveData<List<AllProductEntity>> = MutableLiveData()
+
     override suspend fun signupUser(signup: Signup): Response<SignupResponse> {
         return Response.success(signupResponse)
     }
@@ -81,7 +83,7 @@ class FakeRepository() : ProductRepository {
     }
 
     override fun getallProducts(): LiveData<List<AllProductEntity>> {
-        return  flowOf<List<AllProductEntity>>().asLiveData()
+        return  allproductEntity
     }
 
     override fun getProducts(): LiveData<List<CartEntity>> {

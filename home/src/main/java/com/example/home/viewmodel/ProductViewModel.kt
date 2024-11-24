@@ -31,9 +31,6 @@ class ProductViewModel @Inject constructor(
     var readCart: LiveData<List<CartEntity>> = productRepository.getAllCart()
 
 
-    private val _liveProduct = MutableLiveData<com.example.common.NetworkCall<Products>>()
-    val liveProduct: LiveData<com.example.common.NetworkCall<Products>>
-        get() = _liveProduct
 
 
     private val _livesingleProduct =
@@ -46,10 +43,13 @@ class ProductViewModel @Inject constructor(
     val livecart: LiveData<com.example.common.NetworkCall<Carts>>
         get() = _livecart
 
-    //Network
-    /** (GetProduct  Step 1)
-     * This Function Triggers The GetProduct from the repository (GetProduct Step 2) in product Repository
-     * */
+
+
+
+    val _liveProduct = MutableLiveData<com.example.common.NetworkCall<Products>>()
+    val liveProduct: LiveData<com.example.common.NetworkCall<Products>>
+        get() = _liveProduct
+
     fun getallProducts() {
         _liveProduct.value = com.example.common.NetworkCall.Loading()
         viewModelScope.launch {
@@ -60,6 +60,8 @@ class ProductViewModel @Inject constructor(
                     response.isSuccessful -> {
                         _liveProduct.value =
                             com.example.common.NetworkCall.Success(response.body()!!)
+
+                        println("DATA_FROM::LDATA: "+_liveProduct.value?.data)
 
                         var productbody = response.body()
                         if (productbody != null) {

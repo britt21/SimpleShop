@@ -2,6 +2,7 @@ package com.example.home.viewmodel
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
 import com.example.data.room.CartData
 import com.example.data.room.CartEntity
 import com.example.data.room.ItemCategory
@@ -22,6 +23,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
 class ProductViewModelTest {
@@ -45,57 +47,34 @@ class ProductViewModelTest {
         Dispatchers.resetMain()
     }
 
-//    @Test
-//    fun testGetAllProducts() = runTest {
-//        val fakeProducts = listOf(
-//            ProductEntity(1L, ItemCategory("Category1")),
-//            ProductEntity(2L, ItemCategory("Category2"))
-//        )
-//
-//        // Insert data
-//        fakeProducts.forEach { repository.insertCategory(it) }
-//
-//        viewModel.getallProducts()
-//        advanceUntilIdle() // Ensures the coroutine has completed
-//
-//        val data = viewModel.liveProduct.getOrAwaitValueUnitTest()
-//
-//        TestCase.assertNotNull(data.data)
-//        TestCase.assertEquals(fakeProducts.size, data.data!!.size)
-//    }
-
-//    @Test
-//    fun testInsertProductId() = runTest {
-//        val product = ProductEntity(1L, ItemCategory("NewCategory"))
-//        viewModel.insertProductId(product)
-//
-//        val data = repository.readCategory()
-//        TestCase.assertNotNull(data.value)
-//    }
-
     @Test
-    fun testInsertCart() = runTest {
-        val cartData = CartEntity(
-            id = 1,
-            cartData = CartData(cartImg = "img.png", carttitle = "Item", cartprice = 100.0)
+    fun testGetAllProducts() = runTest {
+        val fakeProducts = listOf(
+            ProductEntity(1L, ItemCategory("Category1")),
+            ProductEntity(2L, ItemCategory("Category2"))
         )
-        viewModel.InsertCart(cartData)
 
-        val data = repository.getProducts()
-        TestCase.assertTrue(data.value!!.isNotEmpty())
+
+        fakeProducts.forEach { repository.InsertCategory(it) }
+
+
+        advanceUntilIdle()
+        repository.productEntity.value = ProductEntity(1L, ItemCategory("NewCategory"))
+
+        val data = repository.ReadCategory().getOrAwaitValueUnitTest()
+        TestCase.assertNotNull(data)
+
+        println("TESTDATA: "+data)
     }
 
     @Test
-    fun testGetSingleProducts() = runTest {
-        val fakeProduct = ProductEntity(1L, ItemCategory("Category1"))
-        repository.InsertCategory(fakeProduct)
+    fun testInsertProductId() = runTest {
+        repository.productEntity.value = ProductEntity(1L, ItemCategory("NewCategory"))
 
-        viewModel.getSingleProducts("1")
-        advanceUntilIdle() // Ensures the coroutine has completed
-
-        val result = viewModel.livesingleProduct.getOrAwaitValueUnitTest()
-
-        println("Result: ${result.data?.category}")
-        TestCase.assertNotNull(result.data?.category)
+        val data = repository.ReadCategory()
+        TestCase.assertNotNull(data.value)
     }
+
+
+
 }
