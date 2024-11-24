@@ -4,6 +4,10 @@
 
 ### How to run the app
 
+## a smaple Apk is availible to download
+
+## Alternative:
+
 ### Sync the Project
 ### Open your project in Android Studio.
 ### Go to File > Sync Project with Gradle Files to ensure all dependencies are downloaded and integrated.
@@ -15,7 +19,6 @@
 ### Implement pagination for loading large data
 
 
-### @Bright Ugwu
 # Architecture Pattern:
 ## 1. The reason for Multi-Module Architecture Pattern to  have a scalable code base and to Achieve Separation of Concerns:
 
