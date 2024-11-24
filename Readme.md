@@ -5,7 +5,6 @@
 ## 1. The reason for Multi-Module Architecture Pattern to  have a scalable code base and to Achieve Separation of Concerns:
 
 # These are Seperated As Follows: 
-
 ## OnBoarding Layer
 ## Common Layer
 ## Home Layer
@@ -13,6 +12,11 @@
 ## Data Layer
 ## Auth Layer
 ## app Layer
+
+## App Screenshot
+![Screenshot_20241124_010924.png](..%2F..%2FDownloads%2FSimpleShop%2FScreenshot_20241124_010924.png)
+![Screenshot_20241124_011000.png](..%2F..%2FDownloads%2FSimpleShop%2FScreenshot_20241124_011000.png)
+![Screenshot_20241124_011022.png](..%2F..%2FDownloads%2FSimpleShop%2FScreenshot_20241124_011022.png)
 
 # Libraries Used On this Project:
 

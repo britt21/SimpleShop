@@ -2,6 +2,7 @@ package com.example.home.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import com.example.data.model.auth_model.Signup
 import com.example.data.model.auth_model.login.LoginUser
 import com.example.data.model.auth_model.response.LoginResponse
@@ -15,6 +16,7 @@ import com.example.data.model.update_user.response.Address
 import com.example.data.model.update_user.response.Geolocation
 import com.example.data.model.update_user.response.Name
 import com.example.data.model.update_user.response.UpdateUserResponse
+import com.example.data.room.AllProductEntity
 import com.example.data.room.CartEntity
 import com.example.data.room.ProductEntity
 import com.example.network.service.ProductRepository
@@ -31,6 +33,7 @@ var product = Products()
 var productEntity = MutableLiveData<ProductEntity>()
 
 val productEntitymock = mutableListOf<ProductEntity>()
+val allproductEntitymock = mutableListOf<AllProductEntity>()
 val cartEntitymock = mutableListOf<CartEntity>()
 
 class FakeRepository() : ProductRepository {
@@ -57,8 +60,8 @@ class FakeRepository() : ProductRepository {
 
     }
 
-    override fun getAllCart(): Flow<List<CartEntity>> {
-        return  flowOf<List<CartEntity>>()
+    override fun getAllCart(): LiveData<List<CartEntity>> {
+        return  flowOf<List<CartEntity>>().asLiveData()
     }
 
     override suspend fun addToCart(id: CartEntity) {
@@ -71,6 +74,18 @@ class FakeRepository() : ProductRepository {
 
     override fun ReadCategory(): LiveData<ProductEntity> {
         return productEntity
+    }
+
+    override fun insertAllProducts(productEntity: AllProductEntity) {
+        allproductEntitymock.add(productEntity)
+    }
+
+    override fun getallProducts(): LiveData<List<AllProductEntity>> {
+        return  flowOf<List<AllProductEntity>>().asLiveData()
+    }
+
+    override fun getProducts(): LiveData<List<CartEntity>> {
+        return  flowOf<List<CartEntity>>().asLiveData()
     }
 
 }
