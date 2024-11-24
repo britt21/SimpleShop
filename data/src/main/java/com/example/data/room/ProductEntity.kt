@@ -27,6 +27,8 @@ data class CartData(
     var carttitle : String,
     var cartprice : Double
 )
+
+
 data class ItemCategory(
     var item : String
 )

@@ -42,7 +42,7 @@ interface ProductRepository {
     suspend fun InsertCategory(productEntity: ProductEntity)
     fun ReadCategory(): LiveData<ProductEntity>
 
-    fun insertAllProducts(productEntity: AllProductEntity)
+    suspend fun insertAllProducts(productEntity: AllProductEntity)
     fun getallProducts(): LiveData<List<AllProductEntity>>
 
 

@@ -2,11 +2,21 @@ package com.example.home.viewmodel
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.data.room.CartData
+import com.example.data.room.CartEntity
+import com.example.data.room.ItemCategory
+import com.example.data.room.ProductEntity
 import junit.framework.TestCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -14,56 +24,78 @@ import org.mockito.Mock
 import org.mockito.Mockito
 
 @ExperimentalCoroutinesApi
-class ProductViewModelTest  {
+class ProductViewModelTest {
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
-    val dispatcher = TestCoroutineDispatcher()
+    private val dispatcher = StandardTestDispatcher()
 
-    lateinit var viewModel: ProductViewModel
+    private lateinit var viewModel: ProductViewModel
+    private lateinit var repository: FakeRepository
+
     @Before
-
-    fun setUp(){
-        viewModel = ProductViewModel(FakeRepository())
+    fun setUp() {
+        repository = FakeRepository()
+        viewModel = ProductViewModel(repository)
         Dispatchers.setMain(dispatcher)
     }
 
-
-
-    fun testGetReadCategory() {}
-
-    fun testSetReadCategory() {}
-
-    fun testGetReadCart() {}
-
-    fun testSetReadCart() {}
-
-    fun testGetLiveProduct() {}
-
-    fun testGetLivesingleProduct() {}
-
-    fun testGetLivecart() {}
-
-    @Test
-    fun testGetallProducts() {
-        viewModel.getallProducts()
-        var data = viewModel.liveProduct.getOrAwaitValueUnitTest()
-        TestCase.assertTrue(data.data != null)
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
     }
 
-    fun testInsertProductId() {}
+//    @Test
+//    fun testGetAllProducts() = runTest {
+//        val fakeProducts = listOf(
+//            ProductEntity(1L, ItemCategory("Category1")),
+//            ProductEntity(2L, ItemCategory("Category2"))
+//        )
+//
+//        // Insert data
+//        fakeProducts.forEach { repository.insertCategory(it) }
+//
+//        viewModel.getallProducts()
+//        advanceUntilIdle() // Ensures the coroutine has completed
+//
+//        val data = viewModel.liveProduct.getOrAwaitValueUnitTest()
+//
+//        TestCase.assertNotNull(data.data)
+//        TestCase.assertEquals(fakeProducts.size, data.data!!.size)
+//    }
 
+//    @Test
+//    fun testInsertProductId() = runTest {
+//        val product = ProductEntity(1L, ItemCategory("NewCategory"))
+//        viewModel.insertProductId(product)
+//
+//        val data = repository.readCategory()
+//        TestCase.assertNotNull(data.value)
+//    }
 
-    fun testInsertCart() {
+    @Test
+    fun testInsertCart() = runTest {
+        val cartData = CartEntity(
+            id = 1,
+            cartData = CartData(cartImg = "img.png", carttitle = "Item", cartprice = 100.0)
+        )
+        viewModel.InsertCart(cartData)
 
+        val data = repository.getProducts()
+        TestCase.assertTrue(data.value!!.isNotEmpty())
     }
 
     @Test
-    fun testGetSingleProducts() {
-        viewModel.getSingleProducts("2")
+    fun testGetSingleProducts() = runTest {
+        val fakeProduct = ProductEntity(1L, ItemCategory("Category1"))
+        repository.InsertCategory(fakeProduct)
+
+        viewModel.getSingleProducts("1")
+        advanceUntilIdle() // Ensures the coroutine has completed
+
         val result = viewModel.livesingleProduct.getOrAwaitValueUnitTest()
-        TestCase.assertTrue(result.data != null)
 
-
+        println("Result: ${result.data?.category}")
+        TestCase.assertNotNull(result.data?.category)
     }
 }

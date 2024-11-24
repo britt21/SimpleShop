@@ -1,8 +1,17 @@
-# A Product for Commercial Power
 
-### @Bright Ugwu 2022
+### How to run the app
+
+### Sync the Project
+   ### Open your project in Android Studio.
+   ### Go to File > Sync Project with Gradle Files to ensure all dependencies are downloaded and integrated.
+## Connect a physical Android device via USB and enable Developer Options and USB Debugging.
+### Alternatively, start an Android emulator from Device Manager in Android Studio.'
+
+### @Bright Ugwu 
 # Architecture Pattern:
 ## 1. The reason for Multi-Module Architecture Pattern to  have a scalable code base and to Achieve Separation of Concerns:
+
+
 
 # These are Seperated As Follows: 
 ## OnBoarding Layer
@@ -14,9 +23,6 @@
 ## app Layer
 
 ## App Screenshot
-![Screenshot_20241124_010924.png](..%2F..%2FDownloads%2FSimpleShop%2FScreenshot_20241124_010924.png)
-![Screenshot_20241124_011000.png](..%2F..%2FDownloads%2FSimpleShop%2FScreenshot_20241124_011000.png)
-![Screenshot_20241124_011022.png](..%2F..%2FDownloads%2FSimpleShop%2FScreenshot_20241124_011022.png)
 
 # Libraries Used On this Project:
 

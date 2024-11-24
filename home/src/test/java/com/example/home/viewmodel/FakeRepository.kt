@@ -76,7 +76,7 @@ class FakeRepository() : ProductRepository {
         return productEntity
     }
 
-    override fun insertAllProducts(productEntity: AllProductEntity) {
+    override suspend fun insertAllProducts(productEntity: AllProductEntity) {
         allproductEntitymock.add(productEntity)
     }
 

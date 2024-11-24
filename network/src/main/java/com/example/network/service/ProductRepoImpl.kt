@@ -71,7 +71,7 @@ class ProductRepoImpl(val productinterface: ProductInterface,val productDao: Pro
         return productDao.ReadCategory()
     }
 
-    override fun insertAllProducts(productEntity: AllProductEntity) {//
+    override suspend fun insertAllProducts(productEntity: AllProductEntity) {//
         productDao.insertallProducts(productEntity)
     }
 
